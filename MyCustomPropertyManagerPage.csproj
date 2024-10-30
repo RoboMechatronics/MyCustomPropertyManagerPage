@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B49DDB15-66ED-4ED5-93E1-4A92EA7252A6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MyCustomPropertyManagerPage</RootNamespace>
+    <AssemblyName>MyCustomPropertyManagerPage</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RegisterForComInterop>true</RegisterForComInterop>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="SolidWorks.Interop.sldworks">
+      <HintPath>..\..\..\..\..\Program Files\SOLIDWORKS Corp\SOLIDWORKS\SolidWorks.Interop.sldworks.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="SolidWorks.Interop.swcommands">
+      <HintPath>..\..\..\..\..\Program Files\SOLIDWORKS Corp\SOLIDWORKS\SolidWorks.Interop.swcommands.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="SolidWorks.Interop.swconst">
+      <HintPath>..\..\..\..\..\Program Files\SOLIDWORKS Corp\SOLIDWORKS\SolidWorks.Interop.swconst.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="SolidWorks.Interop.swpublished">
+      <HintPath>..\..\..\..\..\Program Files\SOLIDWORKS Corp\SOLIDWORKS\SolidWorks.Interop.swpublished.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\solidworks20x20px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\solidworks32x32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\solidworks40x40px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\solidworks64x64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\solidworks96x96px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\solidworks128x128px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\online-library_20x20px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\online-library_32x32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\online-library_40x40px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\online-library_64x64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\online-library_96x96px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\online-library_128x128px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cube16x16px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cube32x32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cube64x64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cube128x128px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cube18x18px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cube24x24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TV3D24x24px.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
