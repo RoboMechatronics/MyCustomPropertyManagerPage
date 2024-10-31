@@ -300,14 +300,14 @@ namespace MyCustomPropertyManagerPage
                     ((PropertyManagerPageControl)Direction_1_Combobox).Left = 20;
                 }
 
-                controlType = (int)swPropertyManagerPageControlType_e.swControlType_Bitmap;
-                align = (int)swPropertyManagerPageControlLeftAlign_e.swControlAlign_LeftEdge;
-                options = (int)swAddControlOptions_e.swControlOptions_Enabled |
-                          (int)swAddControlOptions_e.swControlOptions_Visible;
-                Direction_1_SelectedBox_bitmap = (PropertyManagerPageBitmap)Direction_1_group.AddControl2(Direction_1_SelectedBox_bitmap_ID, controlType, "", align, options, "");
-                Direction_1_SelectedBox_bitmap.SetBitmapByName("../../Resources/cube24x24px.png","");
-                ((PropertyManagerPageControl)Direction_1_SelectedBox_bitmap).Top = 30;
-                ((PropertyManagerPageControl)Direction_1_SelectedBox_bitmap).Left = 0;
+                //controlType = (int)swPropertyManagerPageControlType_e.swControlType_Bitmap;
+                //align = (int)swPropertyManagerPageControlLeftAlign_e.swControlAlign_LeftEdge;
+                //options = (int)swAddControlOptions_e.swControlOptions_Enabled |
+                //          (int)swAddControlOptions_e.swControlOptions_Visible;
+                //Direction_1_SelectedBox_bitmap = (PropertyManagerPageBitmap)Direction_1_group.AddControl2(Direction_1_SelectedBox_bitmap_ID, controlType, "", align, options, "");
+                //Direction_1_SelectedBox_bitmap.SetBitmapByName("../../Resources/cube24x24px.png","");
+                //((PropertyManagerPageControl)Direction_1_SelectedBox_bitmap).Top = 30;
+                //((PropertyManagerPageControl)Direction_1_SelectedBox_bitmap).Left = 0;
 
                 controlType = (int)swPropertyManagerPageControlType_e.swControlType_Selectionbox;
                 align = (int)swPropertyManagerPageControlLeftAlign_e.swControlAlign_Indent;
@@ -316,6 +316,7 @@ namespace MyCustomPropertyManagerPage
 
                 Direction_1_SelectedBox = (PropertyManagerPageSelectionbox)Direction_1_group.AddControl2(Direction_1_SelectedBox_ID, controlType, "", align, options, "Direction");
                 Direction_1_SelectedBox.Height = 25;
+                Direction_1_SelectedBox.SetSelectionColor(true, (int)swUserPreferenceIntegerValue_e.swSystemColorsSelectedItem1);
                 ((PropertyManagerPageControl)Direction_1_SelectedBox).Top = 30;
                 ((PropertyManagerPageControl)Direction_1_SelectedBox).Left = 20;
             }
