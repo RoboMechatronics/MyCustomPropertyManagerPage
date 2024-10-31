@@ -118,11 +118,14 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="bossextrude24x24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bossextrude24x24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="cube128x128px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cube128x128px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cube16x16px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cube16x16px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cube20x20px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cube20x20px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cube24x24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cube24x24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -130,46 +133,34 @@
   <data name="cube32x32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cube32x32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="cube40x40px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cube40x40px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="cube64x64px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cube64x64px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="online_library_128x128px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\online-library_128x128px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cube96x96px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cube96x96px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="online_library_20x20px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\online-library_20x20px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="cutextrude24x24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cutextrude24x24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="online_library_32x32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\online-library_32x32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MergedTwoImages128x128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MergedTwoImages128x128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="online_library_40x40px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\online-library_40x40px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MergedTwoImages20x20" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MergedTwoImages20x20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="online_library_64x64px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\online-library_64x64px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MergedTwoImages32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MergedTwoImages32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="online_library_96x96px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\online-library_96x96px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MergedTwoImages40x40" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MergedTwoImages40x40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="solidworks128x128px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\solidworks128x128px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MergedTwoImages64x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MergedTwoImages64x64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="solidworks20x20px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\solidworks20x20px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="solidworks32x32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\solidworks32x32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="solidworks40x40px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\solidworks40x40px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="solidworks64x64px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\solidworks64x64px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="solidworks96x96px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\solidworks96x96px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="TV3D24x24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TV3D24x24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="MergedTwoImages96x96" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MergedTwoImages96x96.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

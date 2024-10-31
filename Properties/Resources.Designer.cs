@@ -63,6 +63,16 @@ namespace MyCustomPropertyManagerPage.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bossextrude24x24px {
+            get {
+                object obj = ResourceManager.GetObject("bossextrude24x24px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cube128x128px {
             get {
                 object obj = ResourceManager.GetObject("cube128x128px", resourceCulture);
@@ -73,9 +83,9 @@ namespace MyCustomPropertyManagerPage.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap cube16x16px {
+        internal static System.Drawing.Bitmap cube20x20px {
             get {
-                object obj = ResourceManager.GetObject("cube16x16px", resourceCulture);
+                object obj = ResourceManager.GetObject("cube20x20px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,6 +113,16 @@ namespace MyCustomPropertyManagerPage.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cube40x40px {
+            get {
+                object obj = ResourceManager.GetObject("cube40x40px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cube64x64px {
             get {
                 object obj = ResourceManager.GetObject("cube64x64px", resourceCulture);
@@ -113,9 +133,9 @@ namespace MyCustomPropertyManagerPage.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap online_library_128x128px {
+        internal static System.Drawing.Bitmap cube96x96px {
             get {
-                object obj = ResourceManager.GetObject("online_library_128x128px", resourceCulture);
+                object obj = ResourceManager.GetObject("cube96x96px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +143,9 @@ namespace MyCustomPropertyManagerPage.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap online_library_20x20px {
+        internal static System.Drawing.Bitmap cutextrude24x24px {
             get {
-                object obj = ResourceManager.GetObject("online_library_20x20px", resourceCulture);
+                object obj = ResourceManager.GetObject("cutextrude24x24px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +153,9 @@ namespace MyCustomPropertyManagerPage.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap online_library_32x32px {
+        internal static System.Drawing.Bitmap MergedTwoImages128x128 {
             get {
-                object obj = ResourceManager.GetObject("online_library_32x32px", resourceCulture);
+                object obj = ResourceManager.GetObject("MergedTwoImages128x128", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +163,9 @@ namespace MyCustomPropertyManagerPage.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap online_library_40x40px {
+        internal static System.Drawing.Bitmap MergedTwoImages20x20 {
             get {
-                object obj = ResourceManager.GetObject("online_library_40x40px", resourceCulture);
+                object obj = ResourceManager.GetObject("MergedTwoImages20x20", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +173,9 @@ namespace MyCustomPropertyManagerPage.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap online_library_64x64px {
+        internal static System.Drawing.Bitmap MergedTwoImages32x32 {
             get {
-                object obj = ResourceManager.GetObject("online_library_64x64px", resourceCulture);
+                object obj = ResourceManager.GetObject("MergedTwoImages32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +183,9 @@ namespace MyCustomPropertyManagerPage.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap online_library_96x96px {
+        internal static System.Drawing.Bitmap MergedTwoImages40x40 {
             get {
-                object obj = ResourceManager.GetObject("online_library_96x96px", resourceCulture);
+                object obj = ResourceManager.GetObject("MergedTwoImages40x40", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,9 +193,9 @@ namespace MyCustomPropertyManagerPage.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap solidworks128x128px {
+        internal static System.Drawing.Bitmap MergedTwoImages64x64 {
             get {
-                object obj = ResourceManager.GetObject("solidworks128x128px", resourceCulture);
+                object obj = ResourceManager.GetObject("MergedTwoImages64x64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,59 +203,9 @@ namespace MyCustomPropertyManagerPage.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap solidworks20x20px {
+        internal static System.Drawing.Bitmap MergedTwoImages96x96 {
             get {
-                object obj = ResourceManager.GetObject("solidworks20x20px", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap solidworks32x32px {
-            get {
-                object obj = ResourceManager.GetObject("solidworks32x32px", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap solidworks40x40px {
-            get {
-                object obj = ResourceManager.GetObject("solidworks40x40px", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap solidworks64x64px {
-            get {
-                object obj = ResourceManager.GetObject("solidworks64x64px", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap solidworks96x96px {
-            get {
-                object obj = ResourceManager.GetObject("solidworks96x96px", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap TV3D24x24px {
-            get {
-                object obj = ResourceManager.GetObject("TV3D24x24px", resourceCulture);
+                object obj = ResourceManager.GetObject("MergedTwoImages96x96", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

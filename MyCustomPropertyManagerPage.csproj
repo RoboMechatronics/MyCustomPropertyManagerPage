@@ -80,43 +80,25 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\solidworks20x20px.png" />
+    <None Include="Resources\MergedTwoImages20x20.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\solidworks32x32px.png" />
+    <None Include="Resources\MergedTwoImages32x32.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\solidworks40x40px.png" />
+    <None Include="Resources\MergedTwoImages40x40.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\solidworks64x64px.png" />
+    <None Include="Resources\MergedTwoImages64x64.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\solidworks96x96px.png" />
+    <None Include="Resources\MergedTwoImages96x96.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\solidworks128x128px.png" />
+    <None Include="Resources\MergedTwoImages128x128.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\online-library_20x20px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\online-library_32x32px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\online-library_40x40px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\online-library_64x64px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\online-library_96x96px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\online-library_128x128px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\cube16x16px.png" />
+    <None Include="Resources\cube20x20px.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\cube32x32px.png" />
@@ -125,16 +107,22 @@
     <None Include="Resources\cube64x64px.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\cube96x96px.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\cube128x128px.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\cube18x18px.png" />
+    <None Include="Resources\cube40x40px.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\cube24x24px.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\TV3D24x24px.png" />
+    <None Include="Resources\cutextrude24x24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bossextrude24x24px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
