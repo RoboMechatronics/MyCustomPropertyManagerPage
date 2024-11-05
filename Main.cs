@@ -299,7 +299,6 @@ namespace MyCustomPropertyManagerPage
                     From_Combobox.AddItems(items);
                     From_Combobox.CurrentSelection = 0;
                     ((PropertyManagerPageControl)From_Combobox).Top = 20;
-                    //((PropertyManagerPageControl)From_Combobox).Left = 20;
 
                 }
 
