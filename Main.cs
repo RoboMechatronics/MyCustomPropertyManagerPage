@@ -1,13 +1,9 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Runtime.InteropServices;
-using System.Windows.Forms.Integration;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
 using SolidWorks.Interop.swpublished;
-using System.Diagnostics;
-using System.Windows.Interop;
-using System.Windows;
 
 namespace MyCustomPropertyManagerPage
 {
@@ -107,7 +103,6 @@ namespace MyCustomPropertyManagerPage
             swCommandGroup.HasToolbar = true;
             swCommandGroup.HasMenu = true;
             swCommandGroup.Activate();
-
         }
 
         public void CusBossExtrudeCmd()
@@ -174,9 +169,91 @@ namespace MyCustomPropertyManagerPage
         {
             get { return swApp; }
         }
+        public void ConvertFACTOR(double DisplayUnit, ref double FACTOR)
+        {
+            switch (DisplayUnit)
+            {
+                case (int)swLengthUnit_e.swANGSTROM:
+                    // 1 A = 10^-10 m
+                    FACTOR = Math.Pow(10, -10);
+                    break;
+
+                case (int)swLengthUnit_e.swCM:
+                    // 1 cm = 10^-2 m
+                    FACTOR = Math.Pow(10, -2);
+                    break;
+
+                case (int)swLengthUnit_e.swFEET:
+                    // 1 ft = 304.8 m
+                    FACTOR = 304.8;
+                    break;
+
+                case (int)swLengthUnit_e.swFEETINCHES:
+                    break;
+
+                case (int)swLengthUnit_e.swINCHES:
+                    // 1 inches = 0.0254 m
+                    FACTOR = 0.0254;
+                    break;
+
+                case (int)swLengthUnit_e.swMETER:
+                    FACTOR = 1;
+                    break;
+
+                case (int)swLengthUnit_e.swMICRON:
+                    // 1 um = 10^-6 m;
+                    FACTOR = Math.Pow(10, -6);
+                    break;
+
+                case (int)swLengthUnit_e.swMIL:
+                    // 1 mils = 2.54 x 10^-5 m
+                    FACTOR = 2.54 * Math.Pow(10, -5);
+                    break;
+
+                case (int)swLengthUnit_e.swMM:
+                    // 1 mm = 10^-3 m;
+                    FACTOR = Math.Pow(10, -3);
+                    break;
+
+                case (int)swLengthUnit_e.swNANOMETER:
+                    // 1 nm = 10^-9 mm;
+                    FACTOR = Math.Pow(10, -9);
+                    break;
+
+                case (int)swLengthUnit_e.swUIN:
+                    break;
+
+                default:
+                    break;
+            }
+        }
+        public void ConvertAngle(double DisplayUnit, ref double FACTOR)
+        {
+            switch (DisplayUnit)
+            {
+                case (int)swAngleUnit_e.swDEG_MIN:
+                    break;
+
+                case (int)swAngleUnit_e.swDEG_MIN_SEC:
+                    break;
+
+                case (int)swAngleUnit_e.swDEGREES:
+                    // 180deg = 1PI rad
+                    FACTOR = Math.PI / 180;
+                    break;
+
+                case (int)swAngleUnit_e.swRADIANS:
+                    FACTOR = 1;
+                    break;
+
+                default:
+                    break;
+            }
+        }
     }
     public class CusBossExtrudePMPage
     {
+        #region Members
         public Main swAddin;
         private SldWorks swApp;
         private PropertyManagerPage2 swPropertyPage;
@@ -192,65 +269,124 @@ namespace MyCustomPropertyManagerPage
 
         //Controls
         PropertyManagerPageCombobox From_Combobox;
+
         PropertyManagerPageCombobox Direction_1_Combobox;
-        PropertyManagerPageBitmapButton Reverse_direction_1_button_bitmap;
+        PropertyManagerPageBitmapButton Direction_1_Reverse_button_bitmap;
         PropertyManagerPageSelectionbox Direction_1_SelectedBox;
-        PropertyManagerPageLabel Dimensions_1_bitmap;
+        PropertyManagerPageLabel Dimensions_1_Label;
         PropertyManagerPageNumberbox Dimension_1_value;
+        PropertyManagerPageNumberbox Draft_1_Angle;
+        PropertyManagerPageBitmapButton Draft_1_button_bitmap;
+        PropertyManagerPageCheckbox DraftOutward_1_checkbox;
+
         PropertyManagerPageCombobox Direction_2_Combobox;
-        PropertyManagerPageBitmapButton Reverse_direction_2_button_bitmap;
+        PropertyManagerPageBitmapButton Direction_2_Reverse_button_bitmap;
+        PropertyManagerPageSelectionbox Direction_2_SelectedBox;
+        PropertyManagerPageLabel Dimensions_2_Label;
+        PropertyManagerPageNumberbox Dimension_2_value;
+        PropertyManagerPageNumberbox Draft_2_Angle;
+        PropertyManagerPageBitmapButton Draft_2_button_bitmap;
+        PropertyManagerPageCheckbox DraftOutward_2_checkbox;
 
-        //Control IDs
+        PropertyManagerPageCombobox ThinFeature_Reverse_combobox;
+        PropertyManagerPageBitmapButton ThinFeature_Reverse_button_bitmap;
+        PropertyManagerPageLabel ThinFeature_Value_Label;
+        PropertyManagerPageNumberbox ThinFeature_Value_numberbox;
+        PropertyManagerPageCheckbox ThinFeature_Capends_checkbox;
+
+        PropertyManagerPageLabel SelectedContour_Label;
+        PropertyManagerPageSelectionbox SelectedContour_SelectedBox;
+
+        //Group ID
         public const int From_group_ID = 3;
-        public const int Direction_1_group_ID = 4;
-        public const int Direction_2_group_ID = 5;
-        public const int Thin_Feature_group_ID = 6;
-        public const int Selected_Contours_group_ID = 7;
+        public const int Direction_1_group_ID = 5;
+        public const int Direction_2_group_ID = 6;
+        public const int ThinFeature_group_ID = 7;
+        public const int SelectedContours_group_ID = 8;
 
-        public const int From_Combobox_ID = 8;
-        public const int Direction_1_ComboBox_ID = 9;
-        public const int Reverse_direction_1_button_bitmap_ID = 10;
-        public const int Direction_1_SelectedBox_ID = 16;
+        //Controls ID
+        public const int From_Combobox_ID = 4;
 
-        public const int Dimension_1_bitmap_ID = 17;
-        public const int Dimension_1_value_ID = 18;
+        public const int Direction_1_comboBox_ID = 9;
+        public const int Direction_1_Reverse_button_bitmap_ID = 10;
+        public const int Direction_1_SelectedBox_ID = 11;
+        public const int Dimension_1_Label_ID = 12;
+        public const int Dimension_1_value_ID = 13;
+        public const int Draft_1_button_bitmap_ID = 14;
+        public const int Draft_1_Angle_ID = 15;
+        public const int DraftOutWard_1_checkbox_ID = 16;
 
-        public const int Direction_2_comboBox_ID = 11;
-        public const int Reverse_direction_2_button_bitmap_ID = 12;
+        public const int Direction_2_comboBox_ID = 17;
+        public const int Direction_2_Reverse_button_bitmap_ID = 18;
+        public const int Direction_2_SelectedBox_ID = 19;
+        public const int Dimension_2_Label_ID = 20;
+        public const int Dimension_2_value_ID = 21;
+        public const int Draft_2_button__bitmap_ID = 22;
+        public const int Draft_2_Angle_ID = 23;
+        public const int DraftOutWard_2_checkbox_ID = 24;
 
-        public const int Thin_Feature_dotnet_ID = 13;
-        public const int Reverse_Thin_Feature_button_bitmap_ID = 14;
+        public const int ThinFeature_combobox_ID = 25;
+        public const int ThinFeature_Reverse_button_bitmap_ID = 26;
+        public const int ThinFeature_Value_Label_ID = 27;
+        public const int ThinFeature_Value_ID = 28;
+        public const int ThinFeature_Capends_ID = 29;
 
-        public const int Selected_Contours_SelectedBox_ID = 15;
+        public const int SelectedContours_SelectedBox_ID = 30;
+        public const int SelectedContours_Label_ID = 31;
+   
+        #endregion Members
 
+        #region Methods
         public CusBossExtrudePMPage(Main addin)
         {
+            #region Variables
             swAddin = addin;
             swApp = (SldWorks)swAddin.SwApp;
-
             swModel = (ModelDoc2)swApp.ActiveDoc;
 
-            #region Get Unit System
-            int CurrentUnitSystem = swModel.LengthUnit;
-            int DisplayUnit = 0;
+            // Get current Unit System
+            int DisplayUnit = swModel.LengthUnit;
+            double FACTOR = 1;
+            double AngleFACTOR = 1;
 
-            switch (CurrentUnitSystem){
-               case (int)swLengthUnit_e.swMM:
-                    break;
+            // Calculate FACTOR conversion
+            swAddin.ConvertFACTOR(DisplayUnit, ref FACTOR);
 
-               case (int)swLengthUnit_e.swCM:
-                    break;
+            // Variable to set dimension range
+            int Units = (int)swNumberboxUnitType_e.swNumberBox_Length;
+            double Minimum = 0.000001;
+            double Maximum = 100000;
+            bool Inclusive = true;
+            double Increment = 5;
+            double FastIncr = 5;
+            double SlowIncr = 5;
+            double DimensionDefaultValue = 10;
+            
+            Minimum *= FACTOR;
+            Maximum *= FACTOR;
+            DimensionDefaultValue *= FACTOR;
 
-               case (int)swLengthUnit_e.swMETER:
-                    break;
+            Increment *= FACTOR;
+            FastIncr *= FACTOR;
+            SlowIncr *= FACTOR;
 
-               case (int)swLengthUnit_e.swINCHES:
-                    break;
+            //Variable to set angle range
+            double MinimumAngle = 0;
+            double MaximumAngle = 90;
+            double IncrementAngle = 5;
+            double FastIncrAngle = 5;
+            double SlowIncrAngle = 5;
+            double AngleDefaultValue = 0;
 
-               default:
-                    break;
-            }
-            DisplayUnit = (int)swLengthUnit_e.swMM;
+            swAddin.ConvertAngle(DisplayUnit, ref AngleFACTOR);
+
+            MinimumAngle *= AngleFACTOR;
+            MaximumAngle *= AngleFACTOR;
+            AngleDefaultValue *= AngleFACTOR;
+
+            IncrementAngle *= FACTOR;
+            FastIncrAngle *= FACTOR;
+            SlowIncrAngle *= FACTOR;
             #endregion
 
             #region Create Property Manager Page
@@ -259,74 +395,84 @@ namespace MyCustomPropertyManagerPage
             int errors = -1;
             int options =   (int)swPropertyManagerPageOptions_e.swPropertyManagerOptions_OkayButton |
                             (int)swPropertyManagerPageOptions_e.swPropertyManagerOptions_CancelButton;
-
+            // Create Property Manager Page
             swPropertyPage = (PropertyManagerPage2)swApp.CreatePropertyManagerPage("Boss-Extrude (by HienPhan)", options, handler, ref errors);
+            // Set title icon for this page
             swPropertyPage.SetTitleBitmap2("../../Resources/bossextrude24x24px.png");
             #endregion
 
             #region Add Control
             if (swPropertyPage != null && errors == (int)swPropertyManagerPageStatus_e.swPropertyManagerPage_Okay)
             {
+                #region Add Groups
+                // Add "From" group
                 options = (int)swAddGroupBoxOptions_e.swGroupBoxOptions_Expanded | (int)swAddGroupBoxOptions_e.swGroupBoxOptions_Visible;
                 From_group = (IPropertyManagerPageGroup)swPropertyPage.AddGroupBox(From_group_ID, "From", options);
-
+                // Add "Direction 1" group
                 options = (int)swAddGroupBoxOptions_e.swGroupBoxOptions_Expanded | (int)swAddGroupBoxOptions_e.swGroupBoxOptions_Visible;
                 Direction_1_group = (IPropertyManagerPageGroup)swPropertyPage.AddGroupBox(Direction_1_group_ID, "Direction 1", options);
-
+                // Add "Direction 2" group
                 options = (int)swAddGroupBoxOptions_e.swGroupBoxOptions_Checkbox | (int)swAddGroupBoxOptions_e.swGroupBoxOptions_Visible;
                 Direction_2_group = (IPropertyManagerPageGroup)swPropertyPage.AddGroupBox(Direction_2_group_ID, "Direction 2", options);
-
+                // Add "Thin Feature" group
                 options = (int)swAddGroupBoxOptions_e.swGroupBoxOptions_Checkbox | (int)swAddGroupBoxOptions_e.swGroupBoxOptions_Visible;
-                Thin_Feature_group = (IPropertyManagerPageGroup)swPropertyPage.AddGroupBox(Thin_Feature_group_ID, "Thin Feature", options);
-
+                Thin_Feature_group = (IPropertyManagerPageGroup)swPropertyPage.AddGroupBox(ThinFeature_group_ID, "Thin Feature", options);
+                // Add "Selected Contours" group
                 options = (int)swAddGroupBoxOptions_e.swGroupBoxOptions_Expanded | (int)swAddGroupBoxOptions_e.swGroupBoxOptions_Visible;
-                Selected_Contours_group = (IPropertyManagerPageGroup)swPropertyPage.AddGroupBox(Selected_Contours_group_ID, "Selected Contours", options);
+                Selected_Contours_group = (IPropertyManagerPageGroup)swPropertyPage.AddGroupBox(SelectedContours_group_ID, "Selected Contours", options);
+                #endregion Add Groups
 
-
+                #region Add controls
+                // Add controls to "From" group
                 controlType = (int)swPropertyManagerPageControlType_e.swControlType_Combobox;
                 align = (int)swPropertyManagerPageControlLeftAlign_e.swControlAlign_Indent;
                 options = (int)swAddControlOptions_e.swControlOptions_Enabled |
                           (int)swAddControlOptions_e.swControlOptions_Visible;
                 From_Combobox = (PropertyManagerPageCombobox)From_group.AddControl2(From_Combobox_ID, controlType, "", align, options, "From" );
+                
+                string[] items = {  "Sketch Plane",
+                                    "Surface/Face/Plane",
+                                    "Vertex",
+                                    "Offset"};
 
                 if (From_Combobox != null)
-                { 
-                    string[] items = {  "Sketch Plane", 
-                                        "Surface/Face/Plane", 
-                                        "Vertex", 
-                                        "Offset" };
+                {
                     
+
                     From_Combobox.AddItems(items);
                     From_Combobox.CurrentSelection = 0;
                     ((PropertyManagerPageControl)From_Combobox).Top = 20;
-
+                    
                 }
 
+                // Add controls to "Direction 1" group
                 controlType = (int)swPropertyManagerPageControlType_e.swControlType_BitmapButton;
                 align = (int)swPropertyManagerPageControlLeftAlign_e.swControlAlign_LeftEdge;
                 options = (int)swAddControlOptions_e.swControlOptions_Enabled |
                           (int)swAddControlOptions_e.swControlOptions_Visible;
-                Reverse_direction_1_button_bitmap = (PropertyManagerPageBitmapButton)Direction_1_group.AddControl2(Reverse_direction_1_button_bitmap_ID, controlType, "", align, options, "Reverse Direction");
-                Reverse_direction_1_button_bitmap.SetStandardBitmaps((int)swPropertyManagerPageBitmapButtons_e.swBitmapButtonImage_reverse_direction);
-                ((PropertyManagerPageControl)Reverse_direction_1_button_bitmap).Top = 20;
-                ((PropertyManagerPageControl)Reverse_direction_1_button_bitmap).Left = 0;
+                Direction_1_Reverse_button_bitmap = (PropertyManagerPageBitmapButton)Direction_1_group.AddControl2(Direction_1_Reverse_button_bitmap_ID, controlType, "", align, options, "Reverse Direction");
+                Direction_1_Reverse_button_bitmap.SetStandardBitmaps((int)swPropertyManagerPageBitmapButtons_e.swBitmapButtonImage_reverse_direction);
+                ((PropertyManagerPageControl)Direction_1_Reverse_button_bitmap).Top = 20;
+                ((PropertyManagerPageControl)Direction_1_Reverse_button_bitmap).Left = 0;
 
                 controlType = (int)swPropertyManagerPageControlType_e.swControlType_Combobox;
                 align = (int)swPropertyManagerPageControlLeftAlign_e.swControlAlign_Indent;
                 options = (int)swAddControlOptions_e.swControlOptions_Enabled |
                           (int)swAddControlOptions_e.swControlOptions_Visible;
-                Direction_1_Combobox = (PropertyManagerPageCombobox)Direction_1_group.AddControl2(Direction_1_ComboBox_ID, controlType, "", align, options, "Direction 1");
+                Direction_1_Combobox = (PropertyManagerPageCombobox)Direction_1_group.AddControl2(Direction_1_comboBox_ID, controlType, "", align, options, "Direction 1");
 
                 if (Direction_1_Combobox != null)
                 {
-                    string[] items = {"Blind",
-                                      "Offset from Surface",
-                                      "Through All",
-                                      "Up to Next",
-                                      "Up to Surface"};
+                    items = new string[]{"Blind",
+                                        "Offset from Surface",
+                                        "Through All",
+                                        "Up to Next",
+                                        "Up to Surface"};
 
+                    //// Set up
                     Direction_1_Combobox.AddItems(items);
                     Direction_1_Combobox.CurrentSelection = 0;
+                    //// Position
                     ((PropertyManagerPageControl)Direction_1_Combobox).Top = 23;
                     ((PropertyManagerPageControl)Direction_1_Combobox).Left = 20;
                 }
@@ -339,6 +485,8 @@ namespace MyCustomPropertyManagerPage
                 Direction_1_SelectedBox = (PropertyManagerPageSelectionbox)Direction_1_group.AddControl2(Direction_1_SelectedBox_ID, controlType, "", align, options, "Direction");
                 Direction_1_SelectedBox.Height = 25;
                 Direction_1_SelectedBox.SetSelectionColor(true, (int)swUserPreferenceIntegerValue_e.swSystemColorsSelectedItem1);
+                
+                ///// Position
                 ((PropertyManagerPageControl)Direction_1_SelectedBox).Top = 35;
                 ((PropertyManagerPageControl)Direction_1_SelectedBox).Left = 20;
 
@@ -346,21 +494,101 @@ namespace MyCustomPropertyManagerPage
                 align = (int)swPropertyManagerPageControlLeftAlign_e.swControlAlign_LeftEdge;
                 options = (int)swAddControlOptions_e.swControlOptions_Enabled |
                           (int)swAddControlOptions_e.swControlOptions_Visible;
-                Dimensions_1_bitmap = (PropertyManagerPageLabel)Direction_1_group.AddControl2(Dimension_1_bitmap_ID, controlType, "", align, options, "Dimension 1");
-                ((PropertyManagerPageControl)Dimensions_1_bitmap).SetStandardPictureLabel((int)swControlBitmapLabelType_e.swBitmapLabel_LinearDistance1);
-                ((PropertyManagerPageControl)Dimensions_1_bitmap).Top = 65;
-                ((PropertyManagerPageControl)Dimensions_1_bitmap).Left = 0;
+                Dimensions_1_Label = (PropertyManagerPageLabel)Direction_1_group.AddControl2(Dimension_1_Label_ID, controlType, "", align, options, "Dimension 1");
+                ///// Set up
+                ((PropertyManagerPageControl)Dimensions_1_Label).SetStandardPictureLabel((int)swControlBitmapLabelType_e.swBitmapLabel_LinearDistance1);
+                //// Position
+                ((PropertyManagerPageControl)Dimensions_1_Label).Top = 65;
+                ((PropertyManagerPageControl)Dimensions_1_Label).Left = 0;
 
                 controlType = (int)swPropertyManagerPageControlType_e.swControlType_Numberbox;
                 align = (int)swPropertyManagerPageControlLeftAlign_e.swControlAlign_Indent;
                 options = (int)swAddControlOptions_e.swControlOptions_Enabled |
                           (int)swAddControlOptions_e.swControlOptions_Visible;
                 Dimension_1_value = (PropertyManagerPageNumberbox)Direction_1_group.AddControl2(Dimension_1_value_ID, controlType, "", align, options, "");
-                Dimension_1_value.SetRange2((int)swNumberboxUnitType_e.swNumberBox_Length,0.00000001, 200.0, true, 0.01, 0.01, 0.01);
-                Dimension_1_value.Value = (double)10/1000;
+
+                //// Set up
+                Dimension_1_value.SetRange2(Units, Minimum, Maximum, Inclusive, Increment, FastIncr, SlowIncr);
+                Dimension_1_value.Value = DimensionDefaultValue;
                 Dimension_1_value.DisplayedUnit = DisplayUnit;
+
+                //// Position
                 ((PropertyManagerPageControl)Dimension_1_value).Top = 65;
                 ((PropertyManagerPageControl)Dimension_1_value).Left = 20;
+
+                controlType = (int)swPropertyManagerPageControlType_e.swControlType_BitmapButton;
+                align = (int)swPropertyManagerPageControlLeftAlign_e.swControlAlign_LeftEdge;
+                options = (int)swAddControlOptions_e.swControlOptions_Enabled |
+                          (int)swAddControlOptions_e.swControlOptions_Visible;
+                Draft_1_button_bitmap = (PropertyManagerPageBitmapButton)Direction_1_group.AddControl2(Draft_1_button_bitmap_ID, controlType, "", align, options, "Dimension 1");
+                Draft_1_button_bitmap.SetStandardBitmaps((int)swPropertyManagerPageBitmapButtons_e.swBitmapButtonImage_draft);
+
+                ((PropertyManagerPageControl)Draft_1_button_bitmap).Top = 85;
+                ((PropertyManagerPageControl)Draft_1_button_bitmap).Left = 0;
+
+                //// Add Draft 1 Angle numberbox
+                controlType = (int)swPropertyManagerPageControlType_e.swControlType_Numberbox;
+                align = (int)swPropertyManagerPageControlLeftAlign_e.swControlAlign_Indent;
+                options = (int)swAddControlOptions_e.swControlOptions_Enabled |
+                          (int)swAddControlOptions_e.swControlOptions_Visible;
+                Draft_1_Angle = (PropertyManagerPageNumberbox)Direction_1_group.AddControl2(Draft_1_Angle_ID, controlType, "", align, options, "");
+                
+                ((PropertyManagerPageControl)Draft_1_Angle).Top = 85;
+                ((PropertyManagerPageControl)Draft_1_Angle).Left = 20;
+
+                Units = (int)swNumberboxUnitType_e.swNumberBox_Angle;
+                short[] AngularUnit = (short[])swModel.GetAngularUnits();
+                DisplayUnit = (int)AngularUnit[0];
+
+                Draft_1_Angle.SetRange2(Units, MinimumAngle, MaximumAngle, Inclusive, IncrementAngle, FastIncrAngle, SlowIncrAngle);
+                Draft_1_Angle.Value = AngleDefaultValue;
+                Draft_1_Angle.DisplayedUnit = DisplayUnit;
+
+                //// Add Draft outward checkbox
+                controlType = (int)swPropertyManagerPageControlType_e.swControlType_Checkbox;
+                align = (int)swPropertyManagerPageControlLeftAlign_e.swControlAlign_Indent;
+                options = (int)swAddControlOptions_e.swControlOptions_Enabled |
+                          (int)swAddControlOptions_e.swControlOptions_Visible;
+                DraftOutward_1_checkbox = (PropertyManagerPageCheckbox)Direction_1_group.AddControl2(DraftOutWard_1_checkbox_ID, controlType, "Draft outward", align, options, "Draft outward");
+
+
+                // Add Control for Direction 2
+                controlType = (int)swPropertyManagerPageControlType_e.swControlType_BitmapButton;
+                align = (int)swPropertyManagerPageControlLeftAlign_e.swControlAlign_LeftEdge;
+                options = (int)swAddControlOptions_e.swControlOptions_Enabled |
+                          (int)swAddControlOptions_e.swControlOptions_Visible;
+                Direction_2_Reverse_button_bitmap = (PropertyManagerPageBitmapButton)Direction_2_group.AddControl2(Direction_2_Reverse_button_bitmap_ID, controlType, "", align, options, "Reverse Direction");
+                
+                //// Set up
+                Direction_2_Reverse_button_bitmap.SetStandardBitmaps((int)swPropertyManagerPageBitmapButtons_e.swBitmapButtonImage_reverse_direction);
+                
+                //// Position
+                ((PropertyManagerPageControl)Direction_2_Reverse_button_bitmap).Top = 20;
+                ((PropertyManagerPageControl)Direction_2_Reverse_button_bitmap).Left = 0;
+
+                controlType = (int)swPropertyManagerPageControlType_e.swControlType_Combobox;
+                align = (int)swPropertyManagerPageControlLeftAlign_e.swControlAlign_Indent;
+                options = (int)swAddControlOptions_e.swControlOptions_Enabled |
+                          (int)swAddControlOptions_e.swControlOptions_Visible;
+                Direction_2_Combobox = (PropertyManagerPageCombobox)Direction_2_group.AddControl2(Direction_2_comboBox_ID, controlType, "", align, options, "Direction 2");
+
+                if (Direction_2_Combobox != null)
+                {
+                    items = new string[]{"Blind",
+                                        "Offset from Surface",
+                                        "Through All",
+                                        "Up to Next",
+                                        "Up to Surface"};
+
+                    //// Set up
+                    Direction_2_Combobox.AddItems(items);
+                    Direction_2_Combobox.CurrentSelection = 0;
+                    //// Position
+                    ((PropertyManagerPageControl)Direction_2_Combobox).Top = 23;
+                    ((PropertyManagerPageControl)Direction_2_Combobox).Left = 20;
+                }
+
+                #endregion Add controls
             }
             #endregion
         }
@@ -368,9 +596,12 @@ namespace MyCustomPropertyManagerPage
         {
             swPropertyPage.Show();
         }
+        #endregion Methods
+
     }
     public class CusCutExtrudePMPage
     {
+        #region Members
         public Main swAddin;
         private SldWorks swApp;
         private PropertyManagerPage2 swPropertyPage;
@@ -385,17 +616,20 @@ namespace MyCustomPropertyManagerPage
 
         //Controls
         PropertyManagerPageCombobox From_Combobox;
-        PropertyManagerPageBitmapButton Reverse_direction_1_button_bitmap;
+        PropertyManagerPageBitmapButton Direction_1_Reverse_button_bitmap;
 
+        // Controls ID
         public const int From_group_ID = 3;
         public const int Direction_1_group_ID = 4;
         public const int Direction_2_group_ID = 5;
-        public const int Thin_Feature_group_ID = 6;
-        public const int Selected_Contours_group_ID = 7;
+        public const int ThinFeature_group_ID = 6;
+        public const int SelectedContours_group_ID = 7;
 
         public const int From_Combobox_ID = 8;
-        public const int Reverse_direction_1_button_bitmap_ID = 13;
+        public const int Direction_1_Reverse_button_bitmap_ID = 13;
+        #endregion Members
 
+        #region Methods
         public CusCutExtrudePMPage(Main addin)
         {
             swAddin = addin;
@@ -424,19 +658,19 @@ namespace MyCustomPropertyManagerPage
                 Direction_2_group = (IPropertyManagerPageGroup)swPropertyPage.AddGroupBox(Direction_2_group_ID, "Direction 2", options);
 
                 options = (int)swAddGroupBoxOptions_e.swGroupBoxOptions_Checkbox | (int)swAddGroupBoxOptions_e.swGroupBoxOptions_Visible;
-                Thin_Feature_group = (IPropertyManagerPageGroup)swPropertyPage.AddGroupBox(Thin_Feature_group_ID, "Thin Feature", options);
+                Thin_Feature_group = (IPropertyManagerPageGroup)swPropertyPage.AddGroupBox(ThinFeature_group_ID, "Thin Feature", options);
 
                 options = (int)swAddGroupBoxOptions_e.swGroupBoxOptions_Expanded | (int)swAddGroupBoxOptions_e.swGroupBoxOptions_Visible;
-                Selected_Contours_group = (IPropertyManagerPageGroup)swPropertyPage.AddGroupBox(Selected_Contours_group_ID, "Selected Contours", options);
+                Selected_Contours_group = (IPropertyManagerPageGroup)swPropertyPage.AddGroupBox(SelectedContours_group_ID, "Selected Contours", options);
 
                 controlType = (int)swPropertyManagerPageControlType_e.swControlType_BitmapButton;
                 align = (int)swPropertyManagerPageControlLeftAlign_e.swControlAlign_LeftEdge;
                 options = (int)swAddControlOptions_e.swControlOptions_Enabled |
                           (int)swAddControlOptions_e.swControlOptions_Visible;
-                Reverse_direction_1_button_bitmap = (PropertyManagerPageBitmapButton)From_group.AddControl2(Reverse_direction_1_button_bitmap_ID, controlType, "From UI", align, options, "My Custom Cut-Extrude");
-                Reverse_direction_1_button_bitmap.SetStandardBitmaps((int)swPropertyManagerPageBitmapButtons_e.swBitmapButtonImage_reverse_direction);
-                ((PropertyManagerPageControl)Reverse_direction_1_button_bitmap).Top = 20;
-                ((PropertyManagerPageControl)Reverse_direction_1_button_bitmap).Left = 0;
+                Direction_1_Reverse_button_bitmap = (PropertyManagerPageBitmapButton)From_group.AddControl2(Direction_1_Reverse_button_bitmap_ID, controlType, "From UI", align, options, "My Custom Cut-Extrude");
+                Direction_1_Reverse_button_bitmap.SetStandardBitmaps((int)swPropertyManagerPageBitmapButtons_e.swBitmapButtonImage_reverse_direction);
+                ((PropertyManagerPageControl)Direction_1_Reverse_button_bitmap).Top = 20;
+                ((PropertyManagerPageControl)Direction_1_Reverse_button_bitmap).Left = 0;
 
                 controlType = (int)swPropertyManagerPageControlType_e.swControlType_Combobox;
                 align = (int)swPropertyManagerPageControlLeftAlign_e.swControlAlign_Indent;
@@ -449,7 +683,6 @@ namespace MyCustomPropertyManagerPage
                     string[] items = {"Hello World"};
 
                     From_Combobox.AddItems(items);
-                    //From_Combobox.Height = 20;
                     From_Combobox.CurrentSelection = 0;
                     ((PropertyManagerPageControl)From_Combobox).Top = 20;
                     ((PropertyManagerPageControl)From_Combobox).Left = 20;
@@ -462,10 +695,13 @@ namespace MyCustomPropertyManagerPage
         {
             swPropertyPage.Show();
         }
+        #endregion
     }
 
     public class myPropertyManagerPageHandler : PropertyManagerPage2Handler9
     {
+        public myPropertyManagerPageHandler() { }
+
         public void AfterActivation()
         {
             throw new NotImplementedException();
