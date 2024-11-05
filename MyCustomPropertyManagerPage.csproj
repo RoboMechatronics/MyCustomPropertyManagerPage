@@ -98,31 +98,28 @@
     <None Include="Resources\MergedTwoImages128x128.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\cube20x20px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\cube32x32px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\cube64x64px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\cube96x96px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\cube128x128px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\cube40x40px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\cube24x24px.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\cutextrude24x24px.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bossextrude24x24px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\column3D_20x20px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\column3D_32x32px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\column3D_40x40px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\column3D_64x64px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\column3D_96x96px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\column3D_128x128px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

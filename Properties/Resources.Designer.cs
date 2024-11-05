@@ -73,9 +73,9 @@ namespace MyCustomPropertyManagerPage.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap cube128x128px {
+        internal static System.Drawing.Bitmap column3D_128x128px {
             get {
-                object obj = ResourceManager.GetObject("cube128x128px", resourceCulture);
+                object obj = ResourceManager.GetObject("column3D_128x128px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace MyCustomPropertyManagerPage.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap cube20x20px {
+        internal static System.Drawing.Bitmap column3D_20x20px {
             get {
-                object obj = ResourceManager.GetObject("cube20x20px", resourceCulture);
+                object obj = ResourceManager.GetObject("column3D_20x20px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace MyCustomPropertyManagerPage.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap cube24x24px {
+        internal static System.Drawing.Bitmap column3D_32x32px {
             get {
-                object obj = ResourceManager.GetObject("cube24x24px", resourceCulture);
+                object obj = ResourceManager.GetObject("column3D_32x32px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace MyCustomPropertyManagerPage.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap cube32x32px {
+        internal static System.Drawing.Bitmap column3D_40x40px {
             get {
-                object obj = ResourceManager.GetObject("cube32x32px", resourceCulture);
+                object obj = ResourceManager.GetObject("column3D_40x40px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +113,9 @@ namespace MyCustomPropertyManagerPage.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap cube40x40px {
+        internal static System.Drawing.Bitmap column3D_64x64px {
             get {
-                object obj = ResourceManager.GetObject("cube40x40px", resourceCulture);
+                object obj = ResourceManager.GetObject("column3D_64x64px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,19 +123,9 @@ namespace MyCustomPropertyManagerPage.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap cube64x64px {
+        internal static System.Drawing.Bitmap column3D_96x96px {
             get {
-                object obj = ResourceManager.GetObject("cube64x64px", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap cube96x96px {
-            get {
-                object obj = ResourceManager.GetObject("cube96x96px", resourceCulture);
+                object obj = ResourceManager.GetObject("column3D_96x96px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -5,6 +5,9 @@ using System.Windows.Forms.Integration;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
 using SolidWorks.Interop.swpublished;
+using System.Diagnostics;
+using System.Windows.Interop;
+using System.Windows;
 
 namespace MyCustomPropertyManagerPage
 {
@@ -16,7 +19,7 @@ namespace MyCustomPropertyManagerPage
         private CommandManager swCommandManager;
         private CommandGroup swCommandGroup;
         private const string swCommandGroupTitle = "My SOLIDWORKS Add-ins";
-        private const string swCommandGroupToolTip = "My custom command for SOLIDWORKS";
+        private const string swCommandGroupToolTip = "Custom Command";
 
         public string[] IconLists = {   "../../Resources/MergedTwoImages20x20.png",
                                         "../../Resources/MergedTwoImages32x32.png",
@@ -25,12 +28,12 @@ namespace MyCustomPropertyManagerPage
                                         "../../Resources/MergedTwoImages96x96.png",
                                         "../../Resources/MergedTwoImages128x128.png"};
 
-        public string[] MainIconLists = {   "../../Resources/cube20x20px.png",
-                                            "../../Resources/cube32x32px.png",
-                                            "../../Resources/cube40x40px.png",
-                                            "../../Resources/cube64x64px.png",
-                                            "../../Resources/cube96x96px.png",
-                                            "../../Resources/cube128x128px.png"};
+        public string[] MainIconLists = {   "../../Resources/column3D_20x20px.png",
+                                            "../../Resources/column3D_32x32px.png",
+                                            "../../Resources/column3D_40x40px.png",
+                                            "../../Resources/column3D_64x64px.png",
+                                            "../../Resources/column3D_96x96px.png",
+                                            "../../Resources/column3D_128x128px.png"};
 
         public int[] swCommandID = { 1, 2 };
 
@@ -178,6 +181,7 @@ namespace MyCustomPropertyManagerPage
         private SldWorks swApp;
         private PropertyManagerPage2 swPropertyPage;
         private myPropertyManagerPageHandler handler;
+        private ModelDoc2 swModel;
 
         //Groups
         IPropertyManagerPageGroup From_group;
@@ -191,7 +195,8 @@ namespace MyCustomPropertyManagerPage
         PropertyManagerPageCombobox Direction_1_Combobox;
         PropertyManagerPageBitmapButton Reverse_direction_1_button_bitmap;
         PropertyManagerPageSelectionbox Direction_1_SelectedBox;
-        PropertyManagerPageBitmap Direction_1_SelectedBox_bitmap;
+        PropertyManagerPageLabel Dimensions_1_bitmap;
+        PropertyManagerPageNumberbox Dimension_1_value;
         PropertyManagerPageCombobox Direction_2_Combobox;
         PropertyManagerPageBitmapButton Reverse_direction_2_button_bitmap;
 
@@ -206,7 +211,9 @@ namespace MyCustomPropertyManagerPage
         public const int Direction_1_ComboBox_ID = 9;
         public const int Reverse_direction_1_button_bitmap_ID = 10;
         public const int Direction_1_SelectedBox_ID = 16;
-        public const int Direction_1_SelectedBox_bitmap_ID = 17;
+
+        public const int Dimension_1_bitmap_ID = 17;
+        public const int Dimension_1_value_ID = 18;
 
         public const int Direction_2_comboBox_ID = 11;
         public const int Reverse_direction_2_button_bitmap_ID = 12;
@@ -220,6 +227,31 @@ namespace MyCustomPropertyManagerPage
         {
             swAddin = addin;
             swApp = (SldWorks)swAddin.SwApp;
+
+            swModel = (ModelDoc2)swApp.ActiveDoc;
+
+            #region Get Unit System
+            int CurrentUnitSystem = swModel.LengthUnit;
+            int DisplayUnit = 0;
+
+            switch (CurrentUnitSystem){
+               case (int)swLengthUnit_e.swMM:
+                    break;
+
+               case (int)swLengthUnit_e.swCM:
+                    break;
+
+               case (int)swLengthUnit_e.swMETER:
+                    break;
+
+               case (int)swLengthUnit_e.swINCHES:
+                    break;
+
+               default:
+                    break;
+            }
+            DisplayUnit = (int)swLengthUnit_e.swMM;
+            #endregion
 
             #region Create Property Manager Page
             short controlType = -1;
@@ -267,7 +299,7 @@ namespace MyCustomPropertyManagerPage
                     From_Combobox.AddItems(items);
                     From_Combobox.CurrentSelection = 0;
                     ((PropertyManagerPageControl)From_Combobox).Top = 20;
-                    ((PropertyManagerPageControl)From_Combobox).Left = 20;
+                    //((PropertyManagerPageControl)From_Combobox).Left = 20;
 
                 }
 
@@ -296,18 +328,9 @@ namespace MyCustomPropertyManagerPage
 
                     Direction_1_Combobox.AddItems(items);
                     Direction_1_Combobox.CurrentSelection = 0;
-                    ((PropertyManagerPageControl)Direction_1_Combobox).Top = 20;
+                    ((PropertyManagerPageControl)Direction_1_Combobox).Top = 23;
                     ((PropertyManagerPageControl)Direction_1_Combobox).Left = 20;
                 }
-
-                //controlType = (int)swPropertyManagerPageControlType_e.swControlType_Bitmap;
-                //align = (int)swPropertyManagerPageControlLeftAlign_e.swControlAlign_LeftEdge;
-                //options = (int)swAddControlOptions_e.swControlOptions_Enabled |
-                //          (int)swAddControlOptions_e.swControlOptions_Visible;
-                //Direction_1_SelectedBox_bitmap = (PropertyManagerPageBitmap)Direction_1_group.AddControl2(Direction_1_SelectedBox_bitmap_ID, controlType, "", align, options, "");
-                //Direction_1_SelectedBox_bitmap.SetBitmapByName("../../Resources/cube24x24px.png","");
-                //((PropertyManagerPageControl)Direction_1_SelectedBox_bitmap).Top = 30;
-                //((PropertyManagerPageControl)Direction_1_SelectedBox_bitmap).Left = 0;
 
                 controlType = (int)swPropertyManagerPageControlType_e.swControlType_Selectionbox;
                 align = (int)swPropertyManagerPageControlLeftAlign_e.swControlAlign_Indent;
@@ -317,8 +340,28 @@ namespace MyCustomPropertyManagerPage
                 Direction_1_SelectedBox = (PropertyManagerPageSelectionbox)Direction_1_group.AddControl2(Direction_1_SelectedBox_ID, controlType, "", align, options, "Direction");
                 Direction_1_SelectedBox.Height = 25;
                 Direction_1_SelectedBox.SetSelectionColor(true, (int)swUserPreferenceIntegerValue_e.swSystemColorsSelectedItem1);
-                ((PropertyManagerPageControl)Direction_1_SelectedBox).Top = 30;
+                ((PropertyManagerPageControl)Direction_1_SelectedBox).Top = 35;
                 ((PropertyManagerPageControl)Direction_1_SelectedBox).Left = 20;
+
+                controlType = (int)swPropertyManagerPageControlType_e.swControlType_Label;
+                align = (int)swPropertyManagerPageControlLeftAlign_e.swControlAlign_LeftEdge;
+                options = (int)swAddControlOptions_e.swControlOptions_Enabled |
+                          (int)swAddControlOptions_e.swControlOptions_Visible;
+                Dimensions_1_bitmap = (PropertyManagerPageLabel)Direction_1_group.AddControl2(Dimension_1_bitmap_ID, controlType, "", align, options, "Dimension 1");
+                ((PropertyManagerPageControl)Dimensions_1_bitmap).SetStandardPictureLabel((int)swControlBitmapLabelType_e.swBitmapLabel_LinearDistance1);
+                ((PropertyManagerPageControl)Dimensions_1_bitmap).Top = 65;
+                ((PropertyManagerPageControl)Dimensions_1_bitmap).Left = 0;
+
+                controlType = (int)swPropertyManagerPageControlType_e.swControlType_Numberbox;
+                align = (int)swPropertyManagerPageControlLeftAlign_e.swControlAlign_Indent;
+                options = (int)swAddControlOptions_e.swControlOptions_Enabled |
+                          (int)swAddControlOptions_e.swControlOptions_Visible;
+                Dimension_1_value = (PropertyManagerPageNumberbox)Direction_1_group.AddControl2(Dimension_1_value_ID, controlType, "", align, options, "");
+                Dimension_1_value.SetRange2((int)swNumberboxUnitType_e.swNumberBox_Length,0.00000001, 200.0, true, 0.01, 0.01, 0.01);
+                Dimension_1_value.Value = (double)10/1000;
+                Dimension_1_value.DisplayedUnit = DisplayUnit;
+                ((PropertyManagerPageControl)Dimension_1_value).Top = 65;
+                ((PropertyManagerPageControl)Dimension_1_value).Left = 20;
             }
             #endregion
         }

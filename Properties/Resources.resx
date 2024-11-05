@@ -121,26 +121,23 @@
   <data name="bossextrude24x24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\bossextrude24x24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cube128x128px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cube128x128px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="column3D_128x128px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\column3D_128x128px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cube20x20px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cube20x20px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="column3D_20x20px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\column3D_20x20px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cube24x24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cube24x24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="column3D_32x32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\column3D_32x32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cube32x32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cube32x32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="column3D_40x40px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\column3D_40x40px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cube40x40px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cube40x40px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="column3D_64x64px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\column3D_64x64px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cube64x64px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cube64x64px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cube96x96px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cube96x96px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="column3D_96x96px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\column3D_96x96px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cutextrude24x24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cutextrude24x24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
